@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-apple-blue: #007AFF;
+}
+
+@layer base {
+  body {
+    @apply bg-fixed min-h-screen text-slate-800;
+    background: linear-gradient(135deg, #e0e7ff 0%, #fef2f2 50%, #e0f2fe 100%);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-[15px] border border-white/30 rounded-[2.5rem];
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+  }
+
+  .nav-glass {
+    @apply fixed bottom-[20px] left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[440px] flex items-center justify-around h-[70px] z-[100] backdrop-blur-[20px] border border-white/40 rounded-[100px];
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .input-glass {
+    @apply bg-white/40! border border-white/30! rounded-[1.25rem] transition-all duration-300;
+  }
+
+  .input-glass:focus {
+    @apply bg-white/70! border-apple-blue! ring-4 ring-apple-blue/10;
+  }
+
+  .stat-card {
+    @apply bg-white/40 border border-white/30 rounded-[1.5rem];
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Simpanan Siswa",
+  "description": "Aplikasi manajemen tabungan siswa untuk memantau saldo, mencatat transaksi masuk dan keluar, serta melihat riwayat tabungan secara real-time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
