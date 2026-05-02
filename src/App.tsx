@@ -30,6 +30,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GoogleGenAI } from "@google/genai";
+import ReactMarkdown from 'react-markdown';
 import { Student, HistoryItem } from './types.ts';
 
 // Storage Keys
@@ -525,9 +526,7 @@ export default function App() {
                                 <Smartphone className="w-5 h-5" />
                               </div>
                             )}
-                            <div className={`${m.isUser ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white/70 border border-white/50 text-slate-700 rounded-tl-none'} p-3 rounded-2xl shadow-sm text-xs leading-relaxed max-w-[85%]`}>
-                              {m.text}
-                            </div>
+                            <MessageBubble message={m} />
                           </div>
                         ))}
                         {isTyping && (
@@ -733,9 +732,7 @@ export default function App() {
                                 <Smartphone className="w-5 h-5" />
                               </div>
                             )}
-                            <div className={`${m.isUser ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white/70 border border-white/50 text-slate-700 rounded-tl-none'} p-3 rounded-2xl shadow-sm text-xs leading-relaxed max-w-[85%]`}>
-                              {m.text}
-                            </div>
+                            <MessageBubble message={m} />
                           </div>
                         ))}
                         {isTyping && (
@@ -1032,6 +1029,18 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+function MessageBubble({ message }: { message: { text: string, isUser: boolean } }) {
+  return (
+    <div className={`${message.isUser ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white/70 border border-white/50 text-slate-700 rounded-tl-none'} p-3 rounded-2xl shadow-sm text-xs leading-relaxed max-w-[85%] prose-sm prose-slate`}>
+      {message.isUser ? (
+        <span className="whitespace-pre-wrap">{message.text}</span>
+      ) : (
+        <ReactMarkdown>{message.text}</ReactMarkdown>
+      )}
     </div>
   );
 }
